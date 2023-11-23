@@ -1,6 +1,6 @@
 <xml>
 
-<!-- LINUX TOOLS -------------------------------------->
+<!-- LINUX TOOLS -->
 
 
 <section if="xcompile" >
@@ -42,7 +42,14 @@
   <cppflag value="-frtti"/>
   <cppflag value="-std=c++11" if="HXCPP_CPP11" />
   <flag value="-g" if="debug"/>
-  <flag value="-O2" unless="debug"/>
+
+   <!-- G++ OPTIMIZATIONS -->
+  <flag value="-O3"                      unless="debug"/>
+  <flag value="-fallow-store-data-races" unless="debug"/>
+  <flag value="-fsched2-use-superblocks" unless="debug"/>
+  <flag value="-fexcess-precision=fast"  unless="debug"/>
+  <flag value="-faggressive-loop-optimizations" unless="debug"/>
+
   <flag value="-fpic"/>
   <flag value="-fPIC"/>
   <flag value="-Wno-overflow" />
