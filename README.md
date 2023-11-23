@@ -1,30 +1,8 @@
-# hxcpp
+# HXCPP With O3
 
-[![Build Status](https://dev.azure.com/HaxeFoundation/GitHubPublic/_apis/build/status/HaxeFoundation.hxcpp?branchName=master)](https://dev.azure.com/HaxeFoundation/GitHubPublic/_build/latest?definitionId=3&branchName=master)
+This repository is only intended for use in Github workflows. 
 
-hxcpp is the runtime support for the c++ backend of the [haxe](http://haxe.org/) compiler. This contains the headers, libraries and support code required to generate a fully compiled executable from haxe code.
+The current HXCPP version here is an older version, and also has a few changes made to the toolchains.  
+Mostly adding several compiler optimizations in order to speed up Assorion Engine. Please do not use this outside of that.
 
-
-# building the tools
-
-```
-REPO=$(pwd)
-cd ${REPO}/tools/run
-haxe compile.hxml
-cd ${REPO}/tools/hxcpp
-haxe compile.hxml
-cd $REPO
-```
-
-# cppia
-
-You first need to build the cppia host.
-
-```
-REPO=$(pwd)
-cd ${REPO}/project
-haxe compile-cppia.hxml
-cd $REPO
-```
-
-Then you can do `haxelib run hxcpp file.cppia`.
+This repo also contains builds of the CPPIA files in order to be used straight with any project.
