@@ -24,29 +24,24 @@ jobs:
         shell: cmd
       - name: Version Tag
         run: echo "${{github.run_id}}" > VERSION
+
+      - name: Set up MinGW
+        uses: egor-tensin/setup-mingw
+        with:
+          platform: x64
         
       - name: Compile CPPIA
         run: |
           cd project
-          haxe compile-cppia.hxml
+          haxe compile-cppia.hxml -D HXCPP_MINGW
           cd ../
 
       - name: Compile Tools
         run: |
           cd tools/hxcpp
-          haxe compile-cpp.hxml
+          haxe compile-cpp.hxml -D HXCPP_MINGW
           cd ../../
 
-      - name: Create N File
-        run: |
-          cd tools/hxcpp
-          haxe compile.hxml
-          cd ../../
-
-      - name: Move N File
-        run: |
-          move hxcpp.n bin/Linux64/
-        
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
