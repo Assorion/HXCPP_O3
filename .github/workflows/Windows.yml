@@ -21,7 +21,8 @@ jobs:
         run: |
           haxelib setup C:/haxelib
           haxelib install hxcpp 4.3.2
-          set MINGW_ROOT=C:/mingw64
+          dir C:\
+          copy C:\mingw64 C:\MinGW
         shell: cmd
       - name: Version Tag
         run: echo "${{github.run_id}}" > VERSION
