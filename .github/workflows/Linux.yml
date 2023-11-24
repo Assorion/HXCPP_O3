@@ -34,14 +34,17 @@ jobs:
         run: |
           cd tools/hxcpp
           haxe compile-cpp.hxml
+
+      - name: Create N File
+        run: |
+          haxe compile.hxml
           cd ../../
 
       - name: Move N File
         run: |
-          ls
           mv hxcpp.n bin/Linux64/
 
-      - name: Upload CPPIA
+      - name: Upload Build
         uses: actions/upload-artifact@main
         with:
           name: Linux-Build
