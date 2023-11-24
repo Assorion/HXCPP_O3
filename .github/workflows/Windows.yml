@@ -21,8 +21,6 @@ jobs:
         run: |
           haxelib setup C:/haxelib
           haxelib install hxcpp 4.3.2
-          dir C:\
-          copy C:\mingw64 C:\MinGW
         shell: cmd
       - name: Version Tag
         run: echo "${{github.run_id}}" > VERSION
@@ -30,13 +28,13 @@ jobs:
       - name: Compile CPPIA
         run: |
           cd project
-          haxe compile-cppia.hxml -D HXCPP_MINGW
+          haxe compile-cppia.hxml
           cd ../
 
       - name: Compile Tools
         run: |
           cd tools/hxcpp
-          haxe compile-cpp.hxml -D HXCPP_MINGW
+          haxe compile-cpp.hxml
           cd ../../
 
       - name: Publish Artifact
