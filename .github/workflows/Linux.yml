@@ -1,0 +1,49 @@
+name: Linux
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Linux-Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: krdlab/setup-haxe@master
+        with:
+          haxe-version: 4.3.2
+          
+      - name: Install Haxelib
+        run: |
+          haxelib setup ~/haxelib
+          haxelib install hxcpp 4.3.2
+      - name: Version Tag
+        run: echo "${{github.run_id}}" > VERSION
+
+      - name: Compile CPPIA
+        #run: haxelib run Project.xml linux -release --app-version="4.0.0-${{ github.run_id}}"
+        run: |
+          cd projects
+          haxe compile-cppia.hxml
+          cd ../
+
+      - name: Compile Tools
+        run: |
+         cd hxcpp/tools/hxcpp
+         haxe compile-cpp.hxml
+         cd ../../../
+
+      - name: Upload CPPIA
+        uses: actions/upload-artifact@main
+        with:
+          name: Linux-Build
+          path: 'bin/Linux64'
+
+  Build-Download: 
+    name: Build-Download
+    runs-on: ubuntu-latest
+    needs: Linux-Build
+    steps:
+    - name: Download Artifact 
+      uses: actions/download-artifact@main
+      with: 
+        name: Linux-Build

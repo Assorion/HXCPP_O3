@@ -20,7 +20,6 @@ test/haxe/gc/big.txt
 .DS_Store
 
 *.swp
-*.exe
 *.pdb
 *.ilk
 
