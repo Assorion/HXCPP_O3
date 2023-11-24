@@ -14,9 +14,9 @@ jobs:
     steps:  
       - name: find gcc
         run: | 
-          which gcc
+          set MINGW_ROOT=C:/mingw64
           gcc
-        shell: bash
+        shell: cmd
 
       - uses: actions/checkout@main
       - uses: krdlab/setup-haxe@master
