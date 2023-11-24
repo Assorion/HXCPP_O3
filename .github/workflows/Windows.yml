@@ -16,6 +16,9 @@ jobs:
       - uses: krdlab/setup-haxe@master
         with:
           haxe-version: 4.3.2
+
+      - name: Set up MinGW
+        run: gcc
           
       - name: Install Haxelib
         run: |
@@ -24,11 +27,6 @@ jobs:
         shell: cmd
       - name: Version Tag
         run: echo "${{github.run_id}}" > VERSION
-
-      - name: Set up MinGW
-        uses: egor-tensin/setup-mingw@master
-        with:
-          platform: x64
         
       - name: Compile CPPIA
         run: |
