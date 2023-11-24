@@ -26,7 +26,7 @@ jobs:
         run: echo "${{github.run_id}}" > VERSION
 
       - name: Set up MinGW
-        uses: egor-tensin/setup-mingw
+        uses: egor-tensin/setup-mingw@master
         with:
           platform: x64
         
