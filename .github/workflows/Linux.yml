@@ -1,6 +1,11 @@
 name: Linux
 
 on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
   workflow_dispatch:
 
 jobs:
@@ -20,18 +25,16 @@ jobs:
         run: echo "${{github.run_id}}" > VERSION
 
       - name: Compile CPPIA
-        #run: haxelib run Project.xml linux -release --app-version="4.0.0-${{ github.run_id}}"
         run: |
-          ls
           cd project
           haxe compile-cppia.hxml
           cd ../
 
       - name: Compile Tools
         run: |
-         cd hxcpp/tools/hxcpp
+         cd tools/hxcpp
          haxe compile-cpp.hxml
-         cd ../../../
+         cd ../../
 
       - name: Upload CPPIA
         uses: actions/upload-artifact@main
