@@ -36,18 +36,14 @@ jobs:
          haxe compile-cpp.hxml
          cd ../../
 
+      - name: Move N File
+        run: mv hxcpp.n bin/Linux64/
+
       - name: Upload CPPIA
         uses: actions/upload-artifact@main
         with:
           name: Linux-Build
           path: 'bin/Linux64'
-
-      - name: Upload HXCPP.N
-        uses: actions/upload-artifact@main
-        with:
-          name: N-File
-          path: 'hxcpp.n'
-
   Build-Download: 
     name: Build-Download
     runs-on: ubuntu-latest
@@ -57,13 +53,3 @@ jobs:
       uses: actions/download-artifact@main
       with: 
         name: Linux-Build
-  
-  N-Download:
-    name: N-Download
-    runs-on: ubuntu-latest
-    needs: N-File
-    steps:
-    - name: Download Artifact 
-      uses: actions/download-artifact@main
-      with: 
-        name: N-File
