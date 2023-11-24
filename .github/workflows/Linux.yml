@@ -32,11 +32,12 @@ jobs:
 
       - name: Compile Tools
         run: |
-         cd tools/hxcpp
-         haxe compile-cpp.hxml
-         cd ../../
+          cd tools/hxcpp
+          haxe compile-cpp.hxml
+          cd ../../
 
       - name: Move N File
+        run: ls
         run: mv hxcpp.n bin/Linux64/
 
       - name: Upload CPPIA
