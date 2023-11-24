@@ -37,8 +37,9 @@ jobs:
           cd ../../
 
       - name: Move N File
-        run: ls
-        run: mv hxcpp.n bin/Linux64/
+        run: |
+          ls
+          mv hxcpp.n bin/Linux64/
 
       - name: Upload CPPIA
         uses: actions/upload-artifact@main
