@@ -22,6 +22,7 @@ jobs:
       - name: Compile CPPIA
         #run: haxelib run Project.xml linux -release --app-version="4.0.0-${{ github.run_id}}"
         run: |
+          ls
           cd projects
           haxe compile-cppia.hxml
           cd ../
