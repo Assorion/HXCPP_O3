@@ -12,12 +12,6 @@ jobs:
   Windows-Build:
     runs-on: windows-latest
     steps:  
-      - name: find gcc
-        run: | 
-          set MINGW_ROOT=C:/mingw64
-          gcc
-        shell: cmd
-
       - uses: actions/checkout@main
       - uses: krdlab/setup-haxe@master
         with:
@@ -27,6 +21,7 @@ jobs:
         run: |
           haxelib setup C:/haxelib
           haxelib install hxcpp 4.3.2
+          set MINGW_ROOT=C:/mingw64
         shell: cmd
       - name: Version Tag
         run: echo "${{github.run_id}}" > VERSION
