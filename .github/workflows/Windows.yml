@@ -12,6 +12,12 @@ jobs:
   Windows-Build:
     runs-on: windows-latest
     steps:  
+      - name: find gcc
+        run: | 
+          which gcc
+          gcc
+        shell: bash
+
       - uses: actions/checkout@main
       - uses: krdlab/setup-haxe@master
         with:
