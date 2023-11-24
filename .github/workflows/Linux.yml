@@ -34,9 +34,12 @@ jobs:
         run: |
           cd tools/hxcpp
           haxe compile-cpp.hxml
+          cd ../../
 
       - name: Create N File
         run: |
+          cd tools/hxcpp
+          ls 
           haxe compile.hxml
           cd ../../
 
