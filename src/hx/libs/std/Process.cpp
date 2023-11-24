@@ -477,7 +477,7 @@ Dynamic _hx_std_process_exit( Dynamic handle, bool block )
       else if (!block && rval == STILL_ACTIVE)
          return null();
       else
-         return (Dynamic)rval;
+         return rval;
    }
    #else
    int options=0;

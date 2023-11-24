@@ -1,7 +1,7 @@
 <xml>
 
 
-<!-- WINDOWS TOOLS -------------------------------------->
+<!-- WINDOWS TOOLS -->
 
 
 
@@ -84,10 +84,18 @@
   <flag value="-Z7" if="HXCPP_COMPILE_CACHE" tag="debug" />
   <flag value="-Fd${HXCPP_BUILD_DIR}${MSVC_OBJ_DIR}/vc.pdb" unless="HXCPP_COMPILE_CACHE" tag="debug" />
   <flag value="-Od" tag="debug" />
-  <flag value="-O2" tag="release" />
+  <!--flag value="-O2" tag="release" /-->
+
+  <!-- S - Word -->
+  <flag value="-O3"                      tag="release"/>
+  <flag value="-fallow-store-data-races" tag="release"/>
+  <flag value="-fsched2-use-superblocks" tag="release"/>
+  <flag value="-fexcess-precision=fast"  tag="release"/>
+  <flag value="-faggressive-loop-optimizations" tag="release"/>
+
   <flag value="-bigobj" if="debug"  />
   <flag value="-Zc:inline" if="HXCPP_FAST_LINK" unless="debug || HXCPP_OPTIMIZE_LINK || HXCPP_LTCG_INCREMENTAL" /><!-- not available with -Od and -GL -->
-  <flag value="-Os" tag="optim-size" />
+  <!--flag value="-Os" tag="optim-size" /-->
   <flag value="-GL" if="HXCPP_OPTIMIZE_LINK || HXCPP_LTCG_INCREMENTAL" unless="debug"/>
 
   <flag value="-FS" if="HXCPP_FORCE_PDB_SERVER" />
