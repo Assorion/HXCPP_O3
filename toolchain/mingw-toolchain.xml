@@ -35,9 +35,12 @@
   <flag value="-Wno-overflow" />
   <cppflag value="-Wno-invalid-offsetof" />
   <flag value="-g" if="debug"/>
+  <flag value="-pipe"/>
 
-  <!-- G++ OPTIMIZATIONS -->
+   <!-- G++ OPTIMIZATIONS -->
   <flag value="-O3"                      unless="debug"/>
+  <flag value="-march=x86_64"            unless="debug"/>
+  <flag value="-mtune=generic"           unless="debug"/>
   <flag value="-fallow-store-data-races" unless="debug"/>
   <flag value="-fsched2-use-superblocks" unless="debug"/>
   <flag value="-fexcess-precision=fast"  unless="debug"/>
