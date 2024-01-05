@@ -38,13 +38,14 @@
   <flag value="-pipe"/>
 
    <!-- G++ OPTIMIZATIONS -->
-  <flag value="-O3"                      unless="debug"/>
+  <!--flag value="-O3"                      unless="debug"/>
   <flag value="-march=x86-64"            unless="debug"/>
   <flag value="-mtune=generic"           unless="debug"/>
   <flag value="-fallow-store-data-races" unless="debug"/>
   <flag value="-fsched2-use-superblocks" unless="debug"/>
   <flag value="-fexcess-precision=fast"  unless="debug"/>
-  <flag value="-faggressive-loop-optimizations" unless="debug"/>
+  <flag value="-faggressive-loop-optimizations" unless="debug"/-->
+<flag value="-O0"/>
 
   <include name="toolchain/common-defines.xml" />
   <flag value="-DHX_WINDOWS"/>
